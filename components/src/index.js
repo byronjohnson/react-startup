@@ -6,7 +6,7 @@ const App = () => {
         <div className="ui container comments">
             <div className="comment">
                 <a className="avatar" href="">
-                    <img alt="avatar" src="" />
+                    <img alt="avatar" src="https://source.unsplash.com/random" />
                 </a>
                 <div className="content">
                     <a href="/" className="author">
