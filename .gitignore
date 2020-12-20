@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 .eslintcache*
+=======
+# Optional eslint cache
+.eslintcache
+>>>>>>> develop
