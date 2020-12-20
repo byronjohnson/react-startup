@@ -31,11 +31,21 @@ class App extends React.Component {
     }
 
     render (){
-        return <div>
-            <div>Lattitude: {this.state.lat}</div> 
-            <div>Longitude: {this.state.long}</div> 
-            <div>Error Message: {this.state.errorMessage}</div>
-        </div>;
+
+        if(this.state.errorMessage && !this.state.lat){
+            return <div>
+                <div>Error Message: {this.state.errorMessage}</div>
+            </div>
+        } else if(!this.state.errorMessage && this.state.lat){
+            return <div>
+                <div>Lattitude: {this.state.lat}</div> 
+                <div>Longitude: {this.state.long}</div> 
+            </div>
+        } else {
+            return <div>Loading......</div>
+        }
+
+        
     }
 }
 
