@@ -48,27 +48,29 @@ class App extends React.Component {
         console.log('my component was updated');
     }
 
-    render (){
-
+    renderContent(){
         if(this.state.errorMessage && !this.state.lat){
             return <div>
                 <div>Error Message: {this.state.errorMessage}</div>
             </div>
         } else if(!this.state.errorMessage && this.state.lat){
-            // return <div>
-            //     <div>Lattitude: {this.state.lat}</div> 
-            //     <div>Longitude: {this.state.long}</div> 
-            // </div>
-
             return <SeasonDisplay 
                 lat = {this.state.lat}
                 long = {this.state.long}
             />
         } else {
-            return <Spinner />
+            return <Spinner message="Please accept location request" />
         }
+    }
 
-        
+    render (){
+
+        return(
+            <div className="red-border">
+                {this.renderContent()}
+            </div>
+        );
+
     }
 }
 

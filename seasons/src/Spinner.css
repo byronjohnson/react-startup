@@ -3,3 +3,7 @@ ui.segment {
     height: 100vh;
     justify-content: center;
 }
+
+ui.dimmer {
+    height: 100%;
+}

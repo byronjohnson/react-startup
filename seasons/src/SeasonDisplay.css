@@ -39,3 +39,7 @@ h1 {
 i {
     color: #fff;
 }
+
+.red-border {
+    border: solid 10px red;
+}
