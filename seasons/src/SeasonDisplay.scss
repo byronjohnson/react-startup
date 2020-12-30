@@ -1,0 +1,30 @@
+.icon-left {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.icon-right {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+h1 {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.season-display.summer {
+    i {
+        color: orange;
+    }
+}
+
+
+.season-display.winter {
+    i {
+        color: rgb(27, 198, 228);
+    }
+}

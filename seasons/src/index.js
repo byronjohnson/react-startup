@@ -1,18 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
+import Spinner from './Spinner';
+import "semantic-ui-css/semantic.min.css";
 
 
 class App extends React.Component {
 
-    constructor(props){
-        super(props);
+    // constructor(props){
+    //     super(props);
 
-        this.state = { 
-            lat: null,
-            long: null,
-            errorMessage: ''
-        }
+    //     this.state = { 
+    //         lat: null,
+    //         long: null,
+    //         errorMessage: ''
+    //     }
+
+        
+    // }
+
+    state = { 
+        lat: null,
+        long: null,
+        errorMessage: ''
+    }   
+
+    componentDidMount(){
+        console.log('my component was rendered to the screen');
 
         window.navigator.geolocation.getCurrentPosition(
             (position) => { 
@@ -30,6 +44,10 @@ class App extends React.Component {
         );
     }
 
+    componentDidUpdate(){
+        console.log('my component was updated');
+    }
+
     render (){
 
         if(this.state.errorMessage && !this.state.lat){
@@ -37,12 +55,17 @@ class App extends React.Component {
                 <div>Error Message: {this.state.errorMessage}</div>
             </div>
         } else if(!this.state.errorMessage && this.state.lat){
-            return <div>
-                <div>Lattitude: {this.state.lat}</div> 
-                <div>Longitude: {this.state.long}</div> 
-            </div>
+            // return <div>
+            //     <div>Lattitude: {this.state.lat}</div> 
+            //     <div>Longitude: {this.state.long}</div> 
+            // </div>
+
+            return <SeasonDisplay 
+                lat = {this.state.lat}
+                long = {this.state.long}
+            />
         } else {
-            return <div>Loading......</div>
+            return <Spinner />
         }
 
         
