@@ -1,36 +1,40 @@
 import React from 'react';
-import axios from 'axios';
+import unsplash from '../api/unsplash.js';
 import SearchBar from './SearchBar';
+import ImageList from './ImageList';
 import "semantic-ui-css/semantic.min.css";
 
 
 class App extends React.Component {
 
-    async onSearchSubmit(term){
-        console.log('here is the term caught in App:');
+    // State
+    state = {
+        images: []
+    }
+
+    // API Requests
+    onSearchSubmit = async (term) => {
         console.log(term);
 
-        const unsplashEndpoint = 'https://api.unsplash.com/search/photos';
-
-        const response = await axios.get(
-            unsplashEndpoint,
+        const response = await unsplash.get( 'search/photos',
             {
                 params: {
                     query: term
-                },
-                headers: {
-                    Authorization: 'Client-ID baAsnw73DRkWDm1BAgMWnzjpyQogI5qSULI51HWTeNc'
                 }
             }
         );
 
-        console.log(response.data);
+        this.setState({ images: response.data.results });
     }
 
+    // Render Method
     render(){
         return (
             <div className="ui container" style={{ marginTop: '20px' }}>
                 <SearchBar onSubmit={this.onSearchSubmit} />
+                <div>{this.state.images.length} found</div>
+
+                <ImageList images={this.state.images} />
             </div>
         );
     }
